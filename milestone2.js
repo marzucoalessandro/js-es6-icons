@@ -3,165 +3,150 @@ $(document).ready(function () {
   const iconsList = [
      {
       name: "cat",
-      prefix: `  <div>
-        <i class="fas fa-cat"></i>
-        <div class="title">CAT</div>
-      </div>`,
-      type: "",
+      prefix: "fas",
+      type: "fa",
       family: 'animal'
     },
     {
       name: "crow",
-      prefix:  `  <div>
-        <i class="fas fa-crow"></i>
-        <div class="title">CROW</div>
-      </div>`,
-      type: "",
-      family: "animal"
+      prefix: "fas",
+      type: "fa",
+      family: "animal",
     },
     {
       name: "dog",
-      prefix:  `  <div>
-        <i class="fas fa-dog"></i>
-        <div class="title">DOG</div>
-      </div>`,
-      type: "",
+      prefix:  "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "dove",
-      prefix:  `  <div>
-        <i class="fas fa-dove"></i>
-        <div class="title">DOVE</div>
-      </div>`,
-      type: "",
+      prefix:  "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "dragon",
-      prefix: `  <div>
-        <i class="fas fa-dragon"></i>
-        <div class="title">DRAGON</div>
-      </div>`,
-      type: "",
+      prefix: "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "horse",
-      prefix: `  <div>
-        <i class="fas fa-horse"></i>
-        <div class="title">HORSE</div>
-      </div>`,
-      type: "",
+      prefix: "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "hippo",
-      prefix: `  <div>
-        <i class="fas fa-hippo"></i>
-        <div class="title">HIPPO</div>
-      </div>`,
-      type: "",
+      prefix: "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "fish",
-      prefix: `  <div>
-        <i class="fas fa-fish"></i>
-        <div class="title">FISH</div>
-      </div>`,
-      type: "",
+      prefix: "fas",
+      type: "fa",
       family: "animal"
     },
     {
       name: "carrot",
-      prefix:  `  <div>
-        <i class="fas fa-carrot"></i>
-        <div class="title">CARROT</div>
-      </div>`,
-      tipe: "",
+      prefix: "fas",
+      type: "fa",
       family: "vegetables"
     },
     {
-      name: "apple",
-      prefix:  `  <div>
-        <i class="fas fa-apple-alt"></i>
-        <div class="title">APPLE-ALT</div>
-      </div>`,
-      tipe: "",
+      name: "apple-alt",
+      prefix: "fas",
+      type: "fa",
       family: "vegetables"
     },
     {
       name: "lemon",
-      prefix:  `  <div>
-        <i class="fas fa-lemon"></i>
-        <div class="title">LEMON</div>
-      </div>`,
-      tipe: "",
+      prefix: "fas",
+      type: "fa",
       family: "vegetables"
     },
     {
-      name: "pepper",
-      prefix:  `  <div>
-        <i class="fas fa-pepper-hot"></i>
-        <div class="title">PEPPER-HOT</div>
-      </div>`,
-      tipe: "",
+      name: "pepper-hot",
+      prefix: "fas",
+      type: "fa",
       family: "vegetables"
     },
     {
-      name: "astronaut",
-      prefix: `  <div>
-        <i class="fas fa-user-astronaut"></i>
-        <div class="title">USER-ASTRONAUT</div>
-      </div>`,
-      type: "",
+      name: "user-astronaut",
+      prefix: "fas",
+      type: "fa",
       family: "people"
     },
     {
-      name: "graduate",
-      prefix: `  <div>
-        <i class="fas fa-user-graduate"></i>
-        <div class="title">USER-GRADUATE</div>
-      </div>`,
-      type: "",
+      name: "user-graduate",
+      prefix: "fas",
+      type: "fa",
       family: "people"
     },
     {
-      name: "ninja",
-      prefix: `  <div>
-        <i class="fas fa-user-ninja"></i>
-        <div class="title">USER-NINJA</div>
-      </div>`,
-      type: "",
+      name: "user-ninja",
+      prefix: "fas",
+      type: "fa",
       family: "people"
     },
     {
-      name: "secret-agent",
-      prefix: `  <div>
-        <i class="fas fa-user-secret"></i>
-        <div class="title">USER-SECRET</div>
-      </div>`,
-      type: "",
+      name: "user-secret",
+      prefix: "fas",
+      type: "fa",
       family: "people"
     },
   ];
+
+  // console.log(iconsList);
+
+  // Semezioniamo il container icons
+  const album = $("div.icons");
+
   // definiamo dei colori per le icone (blue, orange, purple)
-  const blue = "#0084ff";
-  const orange = "#ffa500";
-  const purple = "#800080";
+  var blue = "blue";
+  var orange = "orange";
+  var purple = "purple";
+
+
+
 
   //aggiungiamo dei colori usando una funzione
 
+  var NewList = iconsList.map(element => {
+    // console.log(element);
+    if (element.family === "animal") {
+      var obj = {...element, color: blue}
+    } else if (element.family === "vegetables") {
+      var obj = {...element, color: orange}
+    } else {
+      var obj = {...element, color: purple}
+    }
+
+    return obj
+
+  });
+  console.log(NewList);
 
   //inseriamo le icone colorate nel container
-
+  print(album, NewList);
 });
 
 
 /* ---- FUNCTIONS ----*/
 //1. Funzione milestone 1
+function print(container, array) {
+  array.forEach(elem => {
 
+    const {name, prefix, type, color} = elem;
+
+    container.append(  ` <div>
+      <i class="${prefix} ${type}-${name}" style="color:${color}"></i>
+      <div class="title">${name}</div>
+      </div>`)
+    })
+  };
 
 //2. funzione per assegnare un colore ad un icona
 // tip: possiamo invocare qui dentro un'altra funzione (2) oppure usare map
